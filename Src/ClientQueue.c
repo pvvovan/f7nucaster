@@ -98,7 +98,7 @@ void RemoveClientFromQueue(struct tcp_server_struct* element)
 
 int GetElements(struct tcp_server_struct** elements, int size)
 {
-	if (size > s_numberOfElements)
+	if (size > (int)s_numberOfElements)
 	{
 		size = s_numberOfElements;
 	}
@@ -135,7 +135,7 @@ void DoSendingCorrection(RingBuffer_DMA* uart_DMA)
 		uint32_t avail = RingBuffer_DMA_Count(uart_DMA);
 		if (avail > 0)
 		{
-			for(int i = 0; i < avail; i++)
+			for(uint32_t i = 0; i < avail; i++)
 			{
 				corrBuffer[i] = RingBuffer_DMA_GetByte(uart_DMA);
 			}

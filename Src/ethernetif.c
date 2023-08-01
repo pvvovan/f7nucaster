@@ -323,6 +323,7 @@ static void low_level_init(struct netif *netif)
 
 static err_t low_level_output(struct netif *netif, struct pbuf *p)
 {
+  (void)netif;
   err_t errval;
   struct pbuf *q;
   uint8_t *buffer = (uint8_t *)(heth.TxDesc->Buffer1Addr);
@@ -407,6 +408,7 @@ error:
    */
 static struct pbuf * low_level_input(struct netif *netif)
 {
+  (void)netif;
   struct pbuf *p = NULL;
   struct pbuf *q = NULL;
   uint16_t len = 0;
