@@ -1,12 +1,3 @@
-/*
- * TcpServer.c
- *
- *  Created on: Oct 29, 2017
- *      Author: vovan
- */
-
-
-
 #include "TcpServer.h"
 #include "lwip/debug.h"
 #include "lwip/stats.h"
@@ -16,11 +7,6 @@
 
 char NtripHeader[256];
 
-
-
-
-
-
 static struct tcp_pcb *tcp_server_pcb;
 
 static err_t tcp_server_accept(void *arg, struct tcp_pcb *newpcb, err_t err);
@@ -29,6 +15,7 @@ static err_t tcp_server_poll(void *arg, struct tcp_pcb *tpcb);
 static err_t tcp_server_sent(void *arg, struct tcp_pcb *tpcb, u16_t len);
 static err_t tcp_server_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err);
 
+int newPxCounter = 0;
 
 /**
   * @brief  Initializes the tcp NTrip Caster server
@@ -63,9 +50,6 @@ void Tcp_NtripCaster_Init(void)
 		}
 	}
 }
-
-
-
 
 
 /**
@@ -168,7 +152,6 @@ static err_t tcp_server_accept(void *arg, struct tcp_pcb *newpcb, err_t err)
 }
 
 
-
 /**
   * @brief  This functions closes the tcp connection
   * @param  tcp_pcb: pointer on the tcp connection
@@ -199,7 +182,6 @@ void tcp_server_connection_close(struct tcp_pcb *tpcb, struct tcp_server_struct 
 }
 
 
-
 /**
   * @brief  This function implements the tcp_err callback function (called
   *         when a fatal tcp_connection error occurs.
@@ -223,8 +205,6 @@ static void tcp_server_error(void *arg, err_t err)
 //		mem_free(es);
 //	}
 }
-
-
 
 
 /**
@@ -278,8 +258,6 @@ static err_t tcp_server_poll(void *arg, struct tcp_pcb *tpcb)
 }
 
 
-
-
 /**
   * @brief  This function implements the tcp_sent LwIP callback (called when ACK
   *         is received from remote host for sent data)
@@ -317,10 +295,6 @@ static err_t tcp_server_sent(void *arg, struct tcp_pcb *tpcb, u16_t len)
 	}
 	return ERR_OK;
 }
-
-
-
-
 
 
 /**
@@ -415,8 +389,6 @@ static err_t tcp_server_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, er
 	}
 	return ret_err;
 }
-
-
 
 
 /**

@@ -33,9 +33,18 @@ LwIP/src/core/pbuf.c \
 LwIP/src/core/tcp.c \
 LwIP/src/core/memp.c \
 LwIP/src/core/netif.c \
-LwIP/src/core/ipv4/dhcp.c \
 LwIP/src/core/timeouts.c \
-LwIP/src/core/udp.c
+LwIP/src/core/udp.c \
+LwIP/src/core/def.c \
+LwIP/src/core/tcp_out.c \
+LwIP/src/core/tcp_in.c \
+LwIP/src/core/ip.c \
+LwIP/src/core/ipv4/dhcp.c \
+LwIP/src/core/ipv4/etharp.c \
+LwIP/src/core/ipv4/ip4_addr.c \
+LwIP/src/core/ipv4/ip4.c \
+LwIP/src/core/ipv4/ip4_frag.c \
+LwIP/src/core/ipv4/icmp.c
 
 # ASM sources
 ASM_SOURCES = \

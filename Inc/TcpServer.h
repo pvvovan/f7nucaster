@@ -1,16 +1,7 @@
-/*
- * TcpServer.h
- *
- *  Created on: Oct 29, 2017
- *      Author: vovan
- */
-
 #ifndef NTRIP_TCPSERVER_H_
 #define NTRIP_TCPSERVER_H_
 
 #include "lwip/tcp.h"
-
-
 
 /* ECHO protocol states */
 enum tcp_server_states
@@ -41,8 +32,6 @@ struct tcp_server_struct
 	int m_ringBufferPos;
 	uint32_t m_lastSendEpoch;
 };
-
-
 
 void Tcp_NtripCaster_Init(void);
 void Tcp_NtripCaster_Send(struct tcp_pcb *tpcb, struct tcp_server_struct * es);
