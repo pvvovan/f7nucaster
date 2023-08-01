@@ -6,7 +6,6 @@ DEBUG = 1
 # Build path
 BUILD_DIR = build
 
-# C sources
 C_SOURCES = \
 Src/main.c \
 Src/Helper.c \
@@ -46,14 +45,10 @@ LwIP/src/core/ipv4/ip4.c \
 LwIP/src/core/ipv4/ip4_frag.c \
 LwIP/src/core/ipv4/icmp.c
 
-# ASM sources
 ASM_SOURCES = \
 startup_stm32f746xx.s
 
 
-#######################################
-# binaries
-#######################################
 PREFIX = arm-none-eabi-
 # The gcc compiler bin path can be either defined in make command via GCC_PATH variable (> make GCC_PATH=xxx)
 # either it can be added to the PATH environment variable.
@@ -72,34 +67,19 @@ HEX = $(CP) -O ihex
 BIN = $(CP) -O binary -S
 
 
-#######################################
-# CFLAGS
-#######################################
-# cpu
 CPU = -mcpu=cortex-m7
-
-# fpu
 FPU = -mfpu=fpv5-sp-d16
-
-# float-abi
 FLOAT-ABI = -mfloat-abi=hard
-
-# mcu
 MCU = $(CPU) -mthumb $(FPU) $(FLOAT-ABI)
 
-# macros for gcc
-# AS defines
 AS_DEFS =
 
-# C defines
 C_DEFS = \
 -D USE_HAL_DRIVER \
 -D STM32F746xx
 
-# AS includes
 AS_INCLUDES =
 
-# C includes
 C_INCLUDES = \
 -I Inc \
 -I STM32F7xx_HAL_Driver/Inc \
@@ -121,14 +101,7 @@ endif
 # Generate dependency information
 CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)"
 
-
-#######################################
-# LDFLAGS
-#######################################
-# link script
 LDSCRIPT = STM32F746ZGTx_FLASH.ld
-
-# libraries
 LIBS = -lc -lm -lnosys
 LIBDIR =
 LDFLAGS = $(MCU) -specs=nano.specs -T$(LDSCRIPT) $(LIBDIR) $(LIBS) -Wl,-Map=$(BUILD_DIR)/$(TARGET).map,--cref -Wl,--gc-sections
@@ -151,7 +124,7 @@ $(BUILD_DIR)/%.o: %.c Makefile | $(BUILD_DIR)
 	$(CC) -c $(CFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
 
 $(BUILD_DIR)/%.o: %.s Makefile | $(BUILD_DIR)
-	$(AS) -c $(CFLAGS) $< -o $@
+	$(AS) -c $(ASFLAGS) $< -o $@
 
 $(BUILD_DIR)/$(TARGET).elf: $(OBJECTS) Makefile
 	$(CC) $(OBJECTS) $(LDFLAGS) -o $@
