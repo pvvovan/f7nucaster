@@ -2,8 +2,6 @@ TARGET = f7nucaster
 
 # debug build?
 DEBUG = 1
-# optimization
-OPT = -Og
 
 # Build path
 BUILD_DIR = build
@@ -62,7 +60,6 @@ C_DEFS = \
 -D USE_HAL_DRIVER \
 -D STM32F746xx
 
-
 # AS includes
 AS_INCLUDES =
 
@@ -71,18 +68,20 @@ C_INCLUDES = \
 -I Inc \
 -I STM32F7xx_HAL_Driver/Inc \
 -I CMSIS/Include \
--I CMSIS/Device/ST/STM32F7xx/Include
-
+-I CMSIS/Device/ST/STM32F7xx/Include \
+-I LwIP/src/include \
+-I LwIP/system
 
 # compile gcc flags
-ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
+ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) -Wall -Wextra -fdata-sections -ffunction-sections
 
-CFLAGS += $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
+CFLAGS += $(MCU) $(C_DEFS) $(C_INCLUDES) -Wall -Wextra -fdata-sections -ffunction-sections
 
 ifeq ($(DEBUG), 1)
-CFLAGS += -g -gdwarf-2
+CFLAGS += -g3 -gdwarf-5 -O0
+else
+CFLAGS += -g0 -gdwarf-2 -O2
 endif
-
 
 # Generate dependency information
 CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)"
