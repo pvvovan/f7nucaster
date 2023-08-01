@@ -59,8 +59,8 @@ AS_DEFS =
 
 # C defines
 C_DEFS = \
--DUSE_HAL_DRIVER \
--DSTM32F746xx
+-D USE_HAL_DRIVER \
+-D STM32F746xx
 
 
 # AS includes
@@ -68,7 +68,11 @@ AS_INCLUDES =
 
 # C includes
 C_INCLUDES = \
--I Inc
+-I Inc \
+-I STM32F7xx_HAL_Driver/Inc \
+-I CMSIS/Include \
+-I CMSIS/Device/ST/STM32F7xx/Include
+
 
 # compile gcc flags
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
