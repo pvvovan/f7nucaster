@@ -8,7 +8,34 @@ BUILD_DIR = build
 
 # C sources
 C_SOURCES = \
-Src/main.c
+Src/main.c \
+Src/Helper.c \
+Src/lwip.c \
+Src/TcpServer.c \
+Src/ClientQueue.c \
+Src/ringbuffer_dma.c \
+Src/system_stm32f7xx.c \
+Src/ethernetif.c \
+STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.c \
+STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.c \
+STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_uart.c \
+STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc.c \
+STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_iwdg.c \
+STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.c \
+STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.c \
+STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.c \
+STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_eth.c \
+STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma.c \
+LwIP/src/core/init.c \
+LwIP/src/netif/ethernet.c \
+LwIP/src/core/mem.c \
+LwIP/src/core/pbuf.c \
+LwIP/src/core/tcp.c \
+LwIP/src/core/memp.c \
+LwIP/src/core/netif.c \
+LwIP/src/core/ipv4/dhcp.c \
+LwIP/src/core/timeouts.c \
+LwIP/src/core/udp.c
 
 # ASM sources
 ASM_SOURCES = \
