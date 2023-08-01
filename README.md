@@ -1,0 +1,2 @@
+# f7nucaster
+NTRIP Caster on NUCLEO-F746ZG (STM32F746ZG MCU)
