@@ -343,3 +343,13 @@ void assert_failed(uint8_t* file, uint32_t line)
 }
 
 #endif
+
+/* Dummy sys handlers */
+void _close_r() { }
+void _kill() { }
+void _lseek() { }
+void _write() { }
+void _fstat() { }
+void _getpid() { }
+void _isatty() { }
+void _read() { }

@@ -108,10 +108,9 @@ C_INCLUDES = \
 -I LwIP/src/include \
 -I LwIP/system
 
-# compile gcc flags
-ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) -Wall -Wextra -fdata-sections -ffunction-sections
-
-CFLAGS += $(MCU) $(C_DEFS) $(C_INCLUDES) -Wall -Wextra -fdata-sections -ffunction-sections
+COMNFLAGS = -Wall -Wextra -fdata-sections -ffunction-sections
+ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(COMNFLAGS)
+CFLAGS += $(MCU) $(C_DEFS) $(C_INCLUDES) $(COMNFLAGS) -std=c99 -Wpedantic
 
 ifeq ($(DEBUG), 1)
 CFLAGS += -g3 -gdwarf-5 -O0
